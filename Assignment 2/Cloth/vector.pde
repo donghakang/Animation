@@ -50,14 +50,7 @@ class vec3 {
     return vec;
   }
   
-  vec3 cross (vec3 v) {
-    vec3 vec = new vec3();
-    vec.x = y * v.z - z * v.y;
-    vec.y = -(x * v.z - z * v.x);
-    vec.z = x * v.y - y * v.x;
-    
-    return vec;
-  }
+  
   
   float dist() {
     return sqrt(x*x + y*y + z*z);
@@ -76,68 +69,15 @@ class vec3 {
 }
 
 
+vec3 cross (vec3 v1, vec3 v2) {
+    vec3 vec = new vec3();
+    vec.x = v1.y * v2.z - v1.z * v2.y;
+    vec.y = -(v1.x * v2.z - v1.z * v2.x);
+    vec.z = v1.x * v2.y - v1.y * v2.x;
+    
+    return vec;
+}
+
 float dot(vec3 a, vec3 b) {
   return a.x*b.x + a.y*b.y + a.z*b.z;
-}
-
-
-
-
-
-class vec {
-  float x, y;
-  
-  vec() {
-    x = 0;
-    y = 0;
-  }
-  
-  vec(float x_, float y_) {
-    x = x_;
-    y = y_;
-  }
-  
-  float dist() {
-    return sqrt(x*x + y*y);
-  }
-  
-  vec add(vec a) {
-    return new vec(x + a.x, y + a.y);
-  }
-  
-  vec subtract(vec a) {
-    return new vec(x - a.x, y - a.y);
-  }
-  
-  vec divideBy(float a) {
-    return new vec(x/a, y/a);
-  }
-  
-  
-  vec multiplyBy(float a) {
-    return new vec(x*a, y*a);
-  }
-  
-  
-}
-
-vec d(vec a, vec b) {
-   vec v = new vec(a.x/b.x, a.y/b.y);
-   return v;
-}
-
-vec m(vec a, vec b) {
-   vec v = new vec(a.x*b.x, a.y*b.y);
-   return v;
-}
-
-float dot(vec a, vec b) {
-  return a.x * b.x + a.y * b.y;
-}
-
-
-vec normalize(vec a, vec b) {
-  vec v = new vec(a.x - b.x, a.y - b.y);
-  float d = v.dist();
-  return v.divideBy(d);
 }
