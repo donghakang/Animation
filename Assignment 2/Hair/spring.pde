@@ -5,7 +5,7 @@ float anchorY = 50;
 float restLen = 10;
 float mass = 3;
 float k = 500; //1 1000
-float kv = 150;
+float kv = 100;
 
 int numX = 1500;
 int numY = 8;
@@ -44,8 +44,7 @@ vec3 randomPositionGenerator() {
   returnVector.x = x;
   returnVector.z = z;
   returnVector.y = lerp(-75, -50, sqrt(x*x + z*z)/radius);
-  println(returnVector.y);
- 
+
   return returnVector;
 }
 
@@ -178,7 +177,6 @@ void ForceCombined(float dt) {
       
       vec3 d = new vec3( x, y - sphereY, z);
       if (d.dist() < radius + 0.09) {
-        //println("HELLO");
         vec3 n = new vec3( -1 * ( -x), -1 * (sphereY - y), -1 * ( -z));    // surface normal 
         n.normalize();
         // bounce = np.multiply(np.dot(v[i,j],n),n)
