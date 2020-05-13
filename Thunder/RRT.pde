@@ -65,10 +65,12 @@ class Node {
 class Edge {
   Node n1;
   Node n2;
+  boolean v;
 
   Edge(Node N1, Node N2) {
     n1 = N1;
     n2 = N2;
+    v = false;
   }
 
   void display() {
@@ -87,7 +89,7 @@ class Edge {
 Node random_state() {
   //float x_limit = random(width/2 - x_range, width/2 + x_range);
   //return new Node(x_limit, height);
-  return new Node(random(width), height-30);
+  return new Node(random(mouseX-300, mouseX+300), height-30);
 }
  
 Node nearest_vertex(Node n, ArrayList<Node> G) {
@@ -134,14 +136,9 @@ void RRT(Node x_init, int K, float q) {
   G.add(x_init);
   for (int k = 0; k < K; k ++) {
     Node qrand = random_state();            // eventually change to random_state()
-    //Node qrand = new Node(random(width), random(height));
     Node qnear = nearest_vertex(qrand, G);
     Node qnew  = new_conf(qnear, qrand, q);
     G.add(qnew);
-    //qrand.display_blue();
-    //qnear.display_green();
-    //qnew.display_red();
-    //line(qnear.pos.x, qnear.pos.y, qnew.pos.x, qnew.pos.y);
     
     E.add(new Edge(qnear, qnew));
     if (qnear.pos.y >= height - 30) {
@@ -152,7 +149,6 @@ void RRT(Node x_init, int K, float q) {
     }
   }
 }
-
 
 
 

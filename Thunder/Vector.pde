@@ -256,19 +256,6 @@ float dist(vec2 a, vec2 b) {
   return sqrt(pow(b.x - a.x,2) + pow(b.y - a.y, 2));
 }
 
-// vec3 cross (vec3 v1, vec3 v2) {
-//     vec3 vec = new vec3();
-//     vec.x = v1.y * v2.z - v1.z * v2.y;
-//     vec.y = -(v1.x * v2.z - v1.z * v2.x);
-//     vec.z = v1.x * v2.y - v1.y * v2.x;
-//
-//     return vec;
-// }
-//
-// float dot(vec3 a, vec3 b) {
-//   return a.x*b.x + a.y*b.y + a.z*b.z;
-// }
-
 float dot(vec2 a, vec2 b) {
   return a.x * b.x + a.y * b.y;
 }
